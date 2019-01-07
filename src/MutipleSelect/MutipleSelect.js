@@ -6,23 +6,32 @@ import List from "./List";
 import "./MutipleSelect.scss";
 
 class MultipleSelect extends React.Component {
-  state = {
-    multipleModal: false,
-    valueList: [],
-    labelList: [],
-    valueString: "",
-    labelString: ""
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      multipleModal: false,
+      valueList: [...props.serviceData]
+    };
+  }
 
   /**
    * 多选模态框内点击确定时的方法
    */
-  onTapConfirm = () => {
-    const { valueList, labelList } = this.state;
+  onTapConfirm = refDom => {
+    const checkedList = refDom.filter(item => {
+      return item.checked;
+    });
+    const value = checkedList.map(item => {
+      return item.value;
+    });
+    const label = checkedList.map(item => {
+      return item.getAttribute("data-label");
+    });
 
+    console.log("hz", value);
+    console.log("label", label);
     this.setState({
-      valueString: Array.from(new Set(valueList)).join(","),
-      labelString: Array.from(new Set(labelList)).join("、")
+      valueList: value
     });
 
     this.onTapSetMultipleSelectionModalStatus();
@@ -37,36 +46,29 @@ class MultipleSelect extends React.Component {
     });
   };
 
-  /** 列表点击时选中的值 */
-  onTapChange = event => {
-    const { value, checked } = event.target;
-    const label = event.target.getAttribute("data-label");
-    const { valueList, labelList } = this.state;
-
-    if (checked && valueList.indexOf(value) === -1) {
-      valueList.push(value);
-      labelList.push(label);
-    } else {
-      valueList.splice(valueList.indexOf(value), 1);
-      labelList.splice(labelList.indexOf(label), 1);
-    }
-    this.setState({
-      valueList,
-      labelList
-    });
-  };
   render() {
-    const { multipleModal, valueString, labelString, valueList } = this.state;
+    const { multipleModal, valueList } = this.state;
     const { data, isRequired, label, checkbox } = this.props;
     const props = {
       onHide: this.onTapSetMultipleSelectionModalStatus,
       onConfirm: this.onTapConfirm,
-      onChange: this.onTapChange,
       data,
       preData: valueList,
       checkbox
     };
-
+    //筛选出源数据中与后台返回的数据相匹配的项，并返回name
+    const serviceDataLabel = data
+      .filter(item => {
+        return valueList.includes(String(item.code));
+      })
+      .map(item => {
+        return item.name;
+      });
+    //返回的相匹配项组合成字符串
+    const serviceDataLabelString = Array.from(new Set(serviceDataLabel)).join(
+      "、"
+    );
+    const valueString = Array.from(new Set(valueList)).join(",");
     return (
       <div className={"multiple-select"}>
         <div className={"multiple-select__label"}>
@@ -80,7 +82,7 @@ class MultipleSelect extends React.Component {
           onClick={this.onTapSetMultipleSelectionModalStatus}
         >
           <input type="hidden" value={valueString} />
-          <p>{labelString || `请选择${label}`}</p>
+          <p>{serviceDataLabelString || `请选择${label}`}</p>
         </div>
         <i className="multiple-select__arrow" />
         {multipleModal && <List {...props} />}
@@ -91,14 +93,16 @@ class MultipleSelect extends React.Component {
 
 /**
  * @param {array} data - 多选列表的数据.
+ * @param {array} serviceData - 从后台返回的数据，一般用于设置默认选择值.
  * @param {boolean} isRequired - 是否显示必填的红色星号.
  * @param {string} label - 多选列表的文字.
  * @param {boolean} checkbox - 是否是checkbok.
  */
 MultipleSelect.prototypes = {
-  data: PropTypes.array,
+  data: PropTypes.array.isRequired,
+  serviceData: PropTypes.array,
   isRequired: PropTypes.bool,
-  label: PropTypes.string,
+  label: PropTypes.string.isRequired,
   checkbox: PropTypes.bool
 };
 
@@ -106,6 +110,7 @@ MultipleSelect.defaultProps = {
   data: [],
   isRequired: true,
   label: "",
-  checkbox: true
+  checkbox: true,
+  serviceData: []
 };
 export default MultipleSelect;
