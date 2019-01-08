@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import "./App.css";
-import MultipleSelect from "./MutipleSelect/MutipleSelect";
+import MultipleSelect from "./MultipleSelect/MultipleSelect";
 const data = [
   { name: "樱花庄", code: 1 },
   { name: "有罪受", code: 2 },

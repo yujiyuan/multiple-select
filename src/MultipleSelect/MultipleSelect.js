@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 // components
 import List from "./List";
 // styles
-import "./MutipleSelect.scss";
+import "./MultipleSelect.scss";
 
 class MultipleSelect extends React.Component {
   constructor(props) {
