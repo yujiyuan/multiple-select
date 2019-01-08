@@ -20,7 +20,7 @@ const data = [
 ```
 ## 示例展示
 
-[codesandbox]: https://codesandbox.io/s/zq10pn529x
+https://codesandbox.io/s/zq10pn529x
 
 ## API
 
