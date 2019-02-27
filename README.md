@@ -1,4 +1,4 @@
-# multiple-select
+# mobile-multiple-select
 一个基于react的移动端多选组件。
 ## 下载
 
