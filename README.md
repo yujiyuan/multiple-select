@@ -14,9 +14,6 @@ const data = [
 ];
 <MultipleSelect data={data} label="人员名称" checkbox serviceData={["2", "3"]} />
 ```
-## 示例展示
-
-https://codesandbox.io/s/zq10pn529x
 
 ## API
 
