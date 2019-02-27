@@ -1,10 +1,6 @@
 # mobile-multiple-select
 一个基于react的移动端多选组件。
-## 下载
 
-```shell
-$ git clone git@github.com:yujiyuan/multiple-select.git
-```
 ## 引用
 
 ```javascript

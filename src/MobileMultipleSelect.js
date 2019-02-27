@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 // components
 import List from "./List";
 // styles
-import "./MultipleSelect.scss";
+import "./MobileMultipleSelect.scss";
 
-class MultipleSelect extends React.Component {
+class MobileMultipleSelect extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -98,7 +98,7 @@ class MultipleSelect extends React.Component {
  * @param {string} label - 多选列表的文字.
  * @param {boolean} checkbox - 是否是checkbok.
  */
-MultipleSelect.prototypes = {
+MobileMultipleSelect.prototypes = {
   data: PropTypes.array.isRequired,
   serviceData: PropTypes.array,
   isRequired: PropTypes.bool,
@@ -106,11 +106,11 @@ MultipleSelect.prototypes = {
   checkbox: PropTypes.bool
 };
 
-MultipleSelect.defaultProps = {
+MobileMultipleSelect.defaultProps = {
   data: [],
   isRequired: true,
   label: "",
   checkbox: true,
   serviceData: []
 };
-export default MultipleSelect;
+export default MobileMultipleSelect;
