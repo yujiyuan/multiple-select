@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 // components
 import List from "./List";
 // styles
-import "./MobileMultipleSelect.scss";
+import "./MobileMultipleSelect.css";
 
 class MobileMultipleSelect extends React.Component {
   constructor(props) {

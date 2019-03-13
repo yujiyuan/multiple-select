@@ -43,11 +43,11 @@
       display: block;
       position: absolute;
       top: 5px;
-      width: 10px; // 勾的短边
-      height: 10px; // 勾的长边
-      border: 1px solid rgba(0, 0, 0, 0.5); // 勾的颜色
-      border-width: 0 2px 2px 0; // 勾的宽度
-      transform: rotate(-45deg); // 定制宽高加上旋转可以伪装内部的白色勾
+      width: 10px; 
+      height: 10px; 
+      border: 1px solid rgba(0, 0, 0, 0.5); 
+      border-width: 0 2px 2px 0; 
+      transform: rotate(-45deg); 
     }
   }
   &:last-child {
@@ -108,11 +108,11 @@
           position: absolute;
           top: 2px;
           left: 5px;
-          width: 7px; // 勾的短边
-          height: 10px; // 勾的长边
-          border: 1px solid white; // 勾的颜色
-          border-width: 0 2px 2px 0; // 勾的宽度
-          transform: rotate(45deg); // 定制宽高加上旋转可以伪装内部的白色勾
+          width: 7px; 
+          height: 10px; 
+          border: 1px solid white;
+          border-width: 0 2px 2px 0; 
+          transform: rotate(45deg); 
         }
       }
     }
