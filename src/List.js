@@ -1,6 +1,6 @@
 import React from "react";
 
-import "./MobileMultipleSelect.css";
+import "./MobileMultipleSelect.scss";
 
 const List = ({ data = [], onHide, onConfirm, preData, checkbox }) => {
   let refDom = [];
