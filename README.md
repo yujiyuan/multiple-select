@@ -4,7 +4,7 @@
 ## 引用
 
 ```javascript
-import MultipleSelect from "./MultipleSelect/MultipleSelect";
+import MultipleSelect from "mobile-multiple-select";
 
 const data = [
   { name: "樱花庄", code: 1 },

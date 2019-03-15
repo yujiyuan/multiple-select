@@ -1,3 +1,3 @@
-import MobileMultipleSelect from "./MobileMultipleSelect";
+import MobileMultipleSelect from "./MobileMultipleSelect.js";
 
 export default MobileMultipleSelect;

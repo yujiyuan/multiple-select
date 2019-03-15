@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --mode development",
-    "compile": "npx babel src --out-dir lib",
+    "compile": "npx babel src --out-dir lib --copy-files",
     "build": "webpack --progress"
   },
   "repository": {
