@@ -22,6 +22,7 @@ const List = ({ data = [], onHide, onConfirm, preData, checkbox }) => {
                   data-label={item.name}
                   ref={node => (refDom = [...refDom, node])}
                   defaultChecked={preData && preData.includes(String(code))}
+                 
                 />
                 <i className="show-box" />
               </label>

@@ -18,6 +18,7 @@ class MobileMultipleSelect extends React.Component {
    * 多选模态框内点击确定时的方法
    */
   onTapConfirm = refDom => {
+    const {onChange} = this.props;
     const checkedList = refDom.filter(item => {
       return item.checked;
     });
@@ -33,7 +34,7 @@ class MobileMultipleSelect extends React.Component {
     this.setState({
       valueList: value
     });
-
+    onChange&&onChange(value);
     this.onTapSetMultipleSelectionModalStatus();
   };
 
@@ -54,7 +55,7 @@ class MobileMultipleSelect extends React.Component {
       onConfirm: this.onTapConfirm,
       data,
       preData: valueList,
-      checkbox
+      checkbox,
     };
     //筛选出源数据中与后台返回的数据相匹配的项，并返回name
     const serviceDataLabel = data
@@ -97,13 +98,15 @@ class MobileMultipleSelect extends React.Component {
  * @param {boolean} isRequired - 是否显示必填的红色星号.
  * @param {string} label - 多选列表的文字.
  * @param {boolean} checkbox - 是否是checkbok.
+ * @param {function} onChange - 点击checkbox时将选中的值传回使用者
  */
 MobileMultipleSelect.prototypes = {
   data: PropTypes.array.isRequired,
   serviceData: PropTypes.array,
   isRequired: PropTypes.bool,
   label: PropTypes.string.isRequired,
-  checkbox: PropTypes.bool
+  checkbox: PropTypes.bool,
+  onChange:PropTypes.func.isRequired
 };
 
 MobileMultipleSelect.defaultProps = {
@@ -111,6 +114,7 @@ MobileMultipleSelect.defaultProps = {
   isRequired: true,
   label: "",
   checkbox: true,
-  serviceData: []
+  serviceData: [],
+  onChange:()=>{}
 };
 export default MobileMultipleSelect;

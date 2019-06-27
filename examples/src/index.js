@@ -9,6 +9,13 @@ const data = [
 ];
 
 class App extends Component {
+  state = {
+    val:[]
+  }
+  handleChange = (val)=>{
+    console.log("val=====>",val);
+    this.setState({val});
+  }
   render() {
     return (
       <MobileMultipleSelect
@@ -16,6 +23,7 @@ class App extends Component {
         label="人员名称"
         checkbox
         serviceData={["2", "3"]}
+        onChange={this.handleChange}
       />
     );
   }
